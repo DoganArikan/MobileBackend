@@ -1,0 +1,946 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="hb_Inside.Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="gen_organizasyon">
+          <Key>
+            <PropertyRef Name="ORG_NO" />
+          </Key>
+          <Property Name="ORG_NO" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="ORG_AD" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ORG_AD_EN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ORG_TIP_NO" Type="decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="PARENT_ORG_NO" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="MALIYET_MERKEZ_KOD" Type="decimal" Precision="7" Scale="0" />
+          <Property Name="MALIYET_MERKEZ_AD" Type="varchar" MaxLength="30" />
+          <Property Name="FABRIKA_ORG_NO" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="HAT_ORG_NO" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="GRUP_ORG_NO" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="URETIM_KOD" Type="varchar" MaxLength="10" />
+          <Property Name="SW_GUNLUK_HESAPLAMA" Type="decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="KARIYER_BASAMAK_1" Type="decimal" Precision="4" Scale="1" />
+          <Property Name="KARIYER_BASAMAK_2" Type="decimal" Precision="4" Scale="1" />
+          <Property Name="KARIYER_BASAMAK_3" Type="decimal" Precision="4" Scale="1" />
+          <Property Name="ORG_DURUM" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="EKLEYEN_KULLANICI" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="EKLENEN_TARIH" Type="date" Nullable="false" />
+          <Property Name="GUNCELLEYEN_KULLANICI" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="GUNCELLENEN_TARIH" Type="date" />
+          <Property Name="ULKE_KOD" Type="varchar" MaxLength="5" />
+          <Property Name="SW_MAKINE_TRANSFER_YAPILABILIR" Type="decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="UST_HAT_KOD" Type="varchar" MaxLength="2" />
+          <Property Name="HAT_TIP" Type="varchar" MaxLength="3" />
+          <Property Name="DAGITIMSURE" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="ORG_KISA_AD" Type="varchar" MaxLength="30" />
+          <Property Name="FAALIYET_RUHSAT_NO" Type="varchar" MaxLength="3" />
+          <Property Name="SW_KESIM_EKIP" Type="decimal" Precision="1" Scale="0" />
+        </EntityType>
+        <EntityType Name="gen_personel">
+          <Key>
+            <PropertyRef Name="SICIL_KOD" />
+          </Key>
+          <Property Name="SICIL_KOD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AD" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SOYAD" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SIFRE" Type="varchar" MaxLength="30" />
+          <Property Name="ULKE_KOD" Type="varchar" MaxLength="5" Nullable="false" />
+          <Property Name="ORG_NO" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="SW_BORDRO_ALT_BIRIM" Type="decimal" Precision="1" Scale="0" Nullable="false" />
+          <Property Name="POZISYON" Type="varchar" MaxLength="10" />
+          <Property Name="CINSIYET" Type="varchar" MaxLength="5" />
+          <Property Name="DOGUM_TARIHI" Type="date" />
+          <Property Name="MEDENI_DURUM" Type="varchar" MaxLength="8" />
+          <Property Name="KAN_GRUBU" Type="varchar" MaxLength="10" />
+          <Property Name="ISE_GIRIS_TARIHI" Type="date" />
+          <Property Name="ISTEN_CIKIS_TARIHI" Type="date" />
+          <Property Name="SIRKET_NO" Type="decimal" Precision="2" Scale="0" />
+          <Property Name="TC_KIMLIK_NO" Type="varchar" MaxLength="12" />
+          <Property Name="SSK_NO" Type="varchar" MaxLength="14" />
+          <Property Name="ADRES" Type="varchar" MaxLength="100" />
+          <Property Name="IL" Type="varchar" MaxLength="50" />
+          <Property Name="ILCE" Type="varchar" MaxLength="50" />
+          <Property Name="TEL1" Type="varchar" MaxLength="21" />
+          <Property Name="TEL2" Type="varchar" MaxLength="21" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+          <Property Name="EGITIM" Type="varchar" MaxLength="50" />
+          <Property Name="MUHASEBE_KODU" Type="decimal" Precision="10" Scale="0" />
+          <Property Name="SW_USTALIK" Type="decimal" Precision="1" Scale="0" />
+          <Property Name="NAR_HESABI_GRUBU" Type="varchar" MaxLength="3" />
+          <Property Name="SW_MERKEZ_URETIM" Type="decimal" Precision="1" Scale="0" />
+          <Property Name="POSTA_KOD" Type="decimal" Precision="3" Scale="0" />
+          <Property Name="SICIL_KAYNAK" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="YONETICI_1" Type="varchar" MaxLength="10" />
+          <Property Name="YONETICI_2" Type="varchar" MaxLength="10" />
+          <Property Name="YONETICI_3" Type="varchar" MaxLength="10" />
+          <Property Name="SORUMLU_ORG_1" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="SORUMLU_ORG_2" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="SORUMLU_ORG_3" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="CALISMA_GRUBU" Type="varchar" MaxLength="3" Nullable="false" />
+          <Property Name="EKLEYEN_KULLANICI" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="EKLENEN_TARIH" Type="date" Nullable="false" />
+          <Property Name="GUNCELLEYEN_KULLANICI" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="GUNCELLENEN_TARIH" Type="date" />
+          <Property Name="SW_AKTIF" Type="decimal" Precision="1" Scale="0" />
+          <Property Name="POZISYON_ACIKLAMA" Type="varchar" MaxLength="40" />
+          <Property Name="SAP_ORG_KOD" Type="decimal" Precision="8" Scale="0" />
+          <Property Name="SAP_ORG_ACIKLAMA" Type="varchar" MaxLength="40" />
+          <Property Name="BMS_FABRIKA_KOD" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="BMS_URUN_GRUP_KOD" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="BMS_HAT_KOD" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="BMS_GRUP_KOD" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="BMS_EKIP_KOD" Type="decimal" Precision="6" Scale="0" />
+          <Property Name="BMS_DEPARTMAN_KOD" Type="decimal" Precision="6" Scale="0" />
+        </EntityType>
+        <EntityType Name="mesaj">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SICIL_KOD" Type="int" Nullable="false" />
+          <Property Name="MESAJ" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="EKLENEN_TARIH" Type="date" Nullable="false" />
+          <Property Name="BARER_TOKEN" Type="varchar" MaxLength="1000" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mesaj_organizasyon">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="ORG_NO" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ORG_NO" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personel_oturum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SICIL_KOD" Type="int" Nullable="false" />
+          <Property Name="OTURUM_BASLANGIC_TARIH" Type="date" Nullable="false" />
+          <Property Name="OTURUM_BITIS_TARIH" Type="date" Nullable="false" />
+          <Property Name="BEARER_TOKEN" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personel_tur">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ACIKLAMA" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="personel_yetki">
+          <Key>
+            <PropertyRef Name="SICIL_KOD" />
+          </Key>
+          <Property Name="SICIL_KOD" Type="int" Nullable="false" />
+          <Property Name="TUR_ID" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_BMS_DEPARTMAN_KOD">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="BMS_DEPARTMAN_KOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BMS_EKIP_KOD">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="BMS_EKIP_KOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BMS_FABRIKA_KOD">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="BMS_FABRIKA_KOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BMS_GRUP_KOD">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="BMS_GRUP_KOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BMS_HAT_KOD">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="BMS_HAT_KOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BMS_URUN_GRUP_KOD">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="BMS_URUN_GRUP_KOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORG_NO">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="ORG_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SORUMLU_ORG_1">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="SORUMLU_ORG_1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SORUMLU_ORG_2">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="SORUMLU_ORG_2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SORUMLU_ORG_3">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="SORUMLU_ORG_3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="mesaj_ibfk_1">
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="1" />
+          <End Role="mesaj" Type="Self.mesaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_personel">
+              <PropertyRef Name="SICIL_KOD" />
+            </Principal>
+            <Dependent Role="mesaj">
+              <PropertyRef Name="SICIL_KOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="mesaj_organizasyon_ibfk_1">
+          <End Role="mesaj" Type="Self.mesaj" Multiplicity="1" />
+          <End Role="mesaj_organizasyon" Type="Self.mesaj_organizasyon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mesaj">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="mesaj_organizasyon">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="mesaj_organizasyon_ibfk_2">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="1" />
+          <End Role="mesaj_organizasyon" Type="Self.mesaj_organizasyon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="mesaj_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PER_OTU_SICIL_KOD">
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="1" />
+          <End Role="personel_oturum" Type="Self.personel_oturum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_personel">
+              <PropertyRef Name="SICIL_KOD" />
+            </Principal>
+            <Dependent Role="personel_oturum">
+              <PropertyRef Name="SICIL_KOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="personel_yetki_ibfk_1">
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="1" />
+          <End Role="personel_yetki" Type="Self.personel_yetki" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="gen_personel">
+              <PropertyRef Name="SICIL_KOD" />
+            </Principal>
+            <Dependent Role="personel_yetki">
+              <PropertyRef Name="SICIL_KOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="personel_yetki_ibfk_2">
+          <End Role="personel_tur" Type="Self.personel_tur" Multiplicity="1" />
+          <End Role="personel_yetki" Type="Self.personel_yetki" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="personel_tur">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="personel_yetki">
+              <PropertyRef Name="TUR_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="PR_TELEFON_NO_KONTROL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="hb_insight">
+          <Parameter Name="P_TEL_NO" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="hb_InsideModelStoreContainer">
+          <EntitySet Name="gen_organizasyon" EntityType="Self.gen_organizasyon" Schema="hb_insight" store:Type="Tables" />
+          <EntitySet Name="gen_personel" EntityType="Self.gen_personel" Schema="hb_insight" store:Type="Tables" />
+          <EntitySet Name="mesaj" EntityType="Self.mesaj" Schema="hb_insight" store:Type="Tables" />
+          <EntitySet Name="mesaj_organizasyon" EntityType="Self.mesaj_organizasyon" Schema="hb_insight" store:Type="Tables" />
+          <EntitySet Name="personel_oturum" EntityType="Self.personel_oturum" Schema="hb_insight" store:Type="Tables" />
+          <EntitySet Name="personel_tur" EntityType="Self.personel_tur" Schema="hb_insight" store:Type="Tables" />
+          <EntitySet Name="personel_yetki" EntityType="Self.personel_yetki" Schema="hb_insight" store:Type="Tables" />
+          <AssociationSet Name="FK_BMS_DEPARTMAN_KOD" Association="Self.FK_BMS_DEPARTMAN_KOD">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BMS_EKIP_KOD" Association="Self.FK_BMS_EKIP_KOD">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BMS_FABRIKA_KOD" Association="Self.FK_BMS_FABRIKA_KOD">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BMS_GRUP_KOD" Association="Self.FK_BMS_GRUP_KOD">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BMS_HAT_KOD" Association="Self.FK_BMS_HAT_KOD">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BMS_URUN_GRUP_KOD" Association="Self.FK_BMS_URUN_GRUP_KOD">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORG_NO" Association="Self.FK_ORG_NO">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SORUMLU_ORG_1" Association="Self.FK_SORUMLU_ORG_1">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SORUMLU_ORG_2" Association="Self.FK_SORUMLU_ORG_2">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SORUMLU_ORG_3" Association="Self.FK_SORUMLU_ORG_3">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="mesaj_ibfk_1" Association="Self.mesaj_ibfk_1">
+            <End Role="gen_personel" EntitySet="gen_personel" />
+            <End Role="mesaj" EntitySet="mesaj" />
+          </AssociationSet>
+          <AssociationSet Name="mesaj_organizasyon_ibfk_1" Association="Self.mesaj_organizasyon_ibfk_1">
+            <End Role="mesaj" EntitySet="mesaj" />
+            <End Role="mesaj_organizasyon" EntitySet="mesaj_organizasyon" />
+          </AssociationSet>
+          <AssociationSet Name="mesaj_organizasyon_ibfk_2" Association="Self.mesaj_organizasyon_ibfk_2">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="mesaj_organizasyon" EntitySet="mesaj_organizasyon" />
+          </AssociationSet>
+          <AssociationSet Name="PER_OTU_SICIL_KOD" Association="Self.PER_OTU_SICIL_KOD">
+            <End Role="gen_personel" EntitySet="gen_personel" />
+            <End Role="personel_oturum" EntitySet="personel_oturum" />
+          </AssociationSet>
+          <AssociationSet Name="personel_yetki_ibfk_1" Association="Self.personel_yetki_ibfk_1">
+            <End Role="gen_personel" EntitySet="gen_personel" />
+            <End Role="personel_yetki" EntitySet="personel_yetki" />
+          </AssociationSet>
+          <AssociationSet Name="personel_yetki_ibfk_2" Association="Self.personel_yetki_ibfk_2">
+            <End Role="personel_tur" EntitySet="personel_tur" />
+            <End Role="personel_yetki" EntitySet="personel_yetki" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="hb_Inside.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="gen_organizasyon">
+          <Key>
+            <PropertyRef Name="ORG_NO" />
+          </Key>
+          <Property Name="ORG_NO" Type="Decimal" Nullable="false" />
+          <Property Name="ORG_AD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ORG_AD_EN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ORG_TIP_NO" Type="Decimal" Nullable="false" />
+          <Property Name="PARENT_ORG_NO" Type="Decimal" />
+          <Property Name="MALIYET_MERKEZ_KOD" Type="Decimal" />
+          <Property Name="MALIYET_MERKEZ_AD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FABRIKA_ORG_NO" Type="Decimal" />
+          <Property Name="HAT_ORG_NO" Type="Decimal" />
+          <Property Name="GRUP_ORG_NO" Type="Decimal" />
+          <Property Name="URETIM_KOD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SW_GUNLUK_HESAPLAMA" Type="Decimal" Nullable="false" />
+          <Property Name="KARIYER_BASAMAK_1" Type="Decimal" />
+          <Property Name="KARIYER_BASAMAK_2" Type="Decimal" />
+          <Property Name="KARIYER_BASAMAK_3" Type="Decimal" />
+          <Property Name="ORG_DURUM" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EKLEYEN_KULLANICI" Type="Decimal" Nullable="false" />
+          <Property Name="EKLENEN_TARIH" Type="DateTime" Nullable="false" />
+          <Property Name="GUNCELLEYEN_KULLANICI" Type="Decimal" />
+          <Property Name="GUNCELLENEN_TARIH" Type="DateTime" />
+          <Property Name="ULKE_KOD" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="SW_MAKINE_TRANSFER_YAPILABILIR" Type="Decimal" Nullable="false" />
+          <Property Name="UST_HAT_KOD" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="HAT_TIP" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="DAGITIMSURE" Type="Decimal" />
+          <Property Name="ORG_KISA_AD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="FAALIYET_RUHSAT_NO" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="SW_KESIM_EKIP" Type="Decimal" />
+          <NavigationProperty Name="gen_personel" Relationship="Self.FK_BMS_DEPARTMAN_KOD" FromRole="gen_organizasyon" ToRole="gen_personel" />
+          <NavigationProperty Name="gen_personel1" Relationship="Self.FK_BMS_EKIP_KOD" FromRole="gen_organizasyon" ToRole="gen_personel" />
+          <NavigationProperty Name="gen_personel2" Relationship="Self.FK_BMS_FABRIKA_KOD" FromRole="gen_organizasyon" ToRole="gen_personel" />
+          <NavigationProperty Name="gen_personel3" Relationship="Self.FK_BMS_GRUP_KOD" FromRole="gen_organizasyon" ToRole="gen_personel" />
+          <NavigationProperty Name="gen_personel4" Relationship="Self.FK_BMS_HAT_KOD" FromRole="gen_organizasyon" ToRole="gen_personel" />
+          <NavigationProperty Name="gen_personel5" Relationship="Self.FK_BMS_URUN_GRUP_KOD" FromRole="gen_organizasyon" ToRole="gen_personel" />
+          <NavigationProperty Name="gen_personel6" Relationship="Self.FK_ORG_NO" FromRole="gen_organizasyon" ToRole="gen_personel" />
+          <NavigationProperty Name="gen_personel7" Relationship="Self.FK_SORUMLU_ORG_1" FromRole="gen_organizasyon" ToRole="gen_personel" />
+          <NavigationProperty Name="gen_personel8" Relationship="Self.FK_SORUMLU_ORG_2" FromRole="gen_organizasyon" ToRole="gen_personel" />
+          <NavigationProperty Name="gen_personel9" Relationship="Self.FK_SORUMLU_ORG_3" FromRole="gen_organizasyon" ToRole="gen_personel" />
+          <NavigationProperty Name="mesaj" Relationship="Self.mesaj_organizasyon" FromRole="gen_organizasyon" ToRole="mesaj" />
+        </EntityType>
+        <EntityType Name="gen_personel">
+          <Key>
+            <PropertyRef Name="SICIL_KOD" />
+          </Key>
+          <Property Name="SICIL_KOD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SOYAD" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SIFRE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="ULKE_KOD" Type="String" MaxLength="5" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ORG_NO" Type="Decimal" />
+          <Property Name="SW_BORDRO_ALT_BIRIM" Type="Decimal" Nullable="false" />
+          <Property Name="POZISYON" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CINSIYET" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="DOGUM_TARIHI" Type="DateTime" />
+          <Property Name="MEDENI_DURUM" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="KAN_GRUBU" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="ISE_GIRIS_TARIHI" Type="DateTime" />
+          <Property Name="ISTEN_CIKIS_TARIHI" Type="DateTime" />
+          <Property Name="SIRKET_NO" Type="Decimal" />
+          <Property Name="TC_KIMLIK_NO" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="SSK_NO" Type="String" MaxLength="14" FixedLength="false" Unicode="false" />
+          <Property Name="ADRES" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ILCE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TEL1" Type="String" MaxLength="21" FixedLength="false" Unicode="false" />
+          <Property Name="TEL2" Type="String" MaxLength="21" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EGITIM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MUHASEBE_KODU" Type="Decimal" />
+          <Property Name="SW_USTALIK" Type="Decimal" />
+          <Property Name="NAR_HESABI_GRUBU" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="SW_MERKEZ_URETIM" Type="Decimal" />
+          <Property Name="POSTA_KOD" Type="Decimal" />
+          <Property Name="SICIL_KAYNAK" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="YONETICI_1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="YONETICI_2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="YONETICI_3" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="SORUMLU_ORG_1" Type="Decimal" />
+          <Property Name="SORUMLU_ORG_2" Type="Decimal" />
+          <Property Name="SORUMLU_ORG_3" Type="Decimal" />
+          <Property Name="CALISMA_GRUBU" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EKLEYEN_KULLANICI" Type="Decimal" Nullable="false" />
+          <Property Name="EKLENEN_TARIH" Type="DateTime" Nullable="false" />
+          <Property Name="GUNCELLEYEN_KULLANICI" Type="Decimal" />
+          <Property Name="GUNCELLENEN_TARIH" Type="DateTime" />
+          <Property Name="SW_AKTIF" Type="Decimal" />
+          <Property Name="POZISYON_ACIKLAMA" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="SAP_ORG_KOD" Type="Decimal" />
+          <Property Name="SAP_ORG_ACIKLAMA" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="BMS_FABRIKA_KOD" Type="Decimal" />
+          <Property Name="BMS_URUN_GRUP_KOD" Type="Decimal" />
+          <Property Name="BMS_HAT_KOD" Type="Decimal" />
+          <Property Name="BMS_GRUP_KOD" Type="Decimal" />
+          <Property Name="BMS_EKIP_KOD" Type="Decimal" />
+          <Property Name="BMS_DEPARTMAN_KOD" Type="Decimal" />
+          <NavigationProperty Name="gen_organizasyon" Relationship="Self.FK_BMS_DEPARTMAN_KOD" FromRole="gen_personel" ToRole="gen_organizasyon" />
+          <NavigationProperty Name="gen_organizasyon1" Relationship="Self.FK_BMS_EKIP_KOD" FromRole="gen_personel" ToRole="gen_organizasyon" />
+          <NavigationProperty Name="gen_organizasyon2" Relationship="Self.FK_BMS_FABRIKA_KOD" FromRole="gen_personel" ToRole="gen_organizasyon" />
+          <NavigationProperty Name="gen_organizasyon3" Relationship="Self.FK_BMS_GRUP_KOD" FromRole="gen_personel" ToRole="gen_organizasyon" />
+          <NavigationProperty Name="gen_organizasyon4" Relationship="Self.FK_BMS_HAT_KOD" FromRole="gen_personel" ToRole="gen_organizasyon" />
+          <NavigationProperty Name="gen_organizasyon5" Relationship="Self.FK_BMS_URUN_GRUP_KOD" FromRole="gen_personel" ToRole="gen_organizasyon" />
+          <NavigationProperty Name="gen_organizasyon6" Relationship="Self.FK_ORG_NO" FromRole="gen_personel" ToRole="gen_organizasyon" />
+          <NavigationProperty Name="gen_organizasyon7" Relationship="Self.FK_SORUMLU_ORG_1" FromRole="gen_personel" ToRole="gen_organizasyon" />
+          <NavigationProperty Name="gen_organizasyon8" Relationship="Self.FK_SORUMLU_ORG_2" FromRole="gen_personel" ToRole="gen_organizasyon" />
+          <NavigationProperty Name="gen_organizasyon9" Relationship="Self.FK_SORUMLU_ORG_3" FromRole="gen_personel" ToRole="gen_organizasyon" />
+          <NavigationProperty Name="mesaj" Relationship="Self.mesaj_ibfk_1" FromRole="gen_personel" ToRole="mesaj" />
+          <NavigationProperty Name="personel_oturum" Relationship="Self.PER_OTU_SICIL_KOD" FromRole="gen_personel" ToRole="personel_oturum" />
+          <NavigationProperty Name="personel_tur" Relationship="Self.personel_yetki" FromRole="gen_personel" ToRole="personel_tur" />
+        </EntityType>
+        <EntityType Name="mesaj">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SICIL_KOD" Type="Int32" Nullable="false" />
+          <Property Name="MESAJ1" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EKLENEN_TARIH" Type="DateTime" Nullable="false" />
+          <Property Name="BARER_TOKEN" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="gen_personel" Relationship="Self.mesaj_ibfk_1" FromRole="mesaj" ToRole="gen_personel" />
+          <NavigationProperty Name="gen_organizasyon" Relationship="Self.mesaj_organizasyon" FromRole="mesaj" ToRole="gen_organizasyon" />
+        </EntityType>
+        <EntityType Name="personel_oturum">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="SICIL_KOD" Type="Int32" Nullable="false" />
+          <Property Name="OTURUM_BASLANGIC_TARIH" Type="DateTime" Nullable="false" />
+          <Property Name="OTURUM_BITIS_TARIH" Type="DateTime" Nullable="false" />
+          <Property Name="BEARER_TOKEN" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <NavigationProperty Name="gen_personel" Relationship="Self.PER_OTU_SICIL_KOD" FromRole="personel_oturum" ToRole="gen_personel" />
+        </EntityType>
+        <EntityType Name="personel_tur">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ACIKLAMA" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="gen_personel" Relationship="Self.personel_yetki" FromRole="personel_tur" ToRole="gen_personel" />
+        </EntityType>
+        <Association Name="FK_BMS_DEPARTMAN_KOD">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="BMS_DEPARTMAN_KOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BMS_EKIP_KOD">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="BMS_EKIP_KOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BMS_FABRIKA_KOD">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="BMS_FABRIKA_KOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BMS_GRUP_KOD">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="BMS_GRUP_KOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BMS_HAT_KOD">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="BMS_HAT_KOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BMS_URUN_GRUP_KOD">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="BMS_URUN_GRUP_KOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ORG_NO">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="ORG_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SORUMLU_ORG_1">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="SORUMLU_ORG_1" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SORUMLU_ORG_2">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="SORUMLU_ORG_2" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SORUMLU_ORG_3">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="0..1" />
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="gen_personel">
+              <PropertyRef Name="SORUMLU_ORG_3" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="mesaj_ibfk_1">
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="1" />
+          <End Role="mesaj" Type="Self.mesaj" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_personel">
+              <PropertyRef Name="SICIL_KOD" />
+            </Principal>
+            <Dependent Role="mesaj">
+              <PropertyRef Name="SICIL_KOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="PER_OTU_SICIL_KOD">
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="1" />
+          <End Role="personel_oturum" Type="Self.personel_oturum" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_personel">
+              <PropertyRef Name="SICIL_KOD" />
+            </Principal>
+            <Dependent Role="personel_oturum">
+              <PropertyRef Name="SICIL_KOD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="mesaj_organizasyon">
+          <End Role="mesaj" Type="Self.mesaj" Multiplicity="*" />
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="*" />
+        </Association>
+        <Association Name="personel_yetki">
+          <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
+          <End Role="personel_tur" Type="Self.personel_tur" Multiplicity="0..1" />
+        </Association>
+        <EntityContainer Name="HB_InsideEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="gen_organizasyon" EntityType="Self.gen_organizasyon" />
+          <EntitySet Name="gen_personel" EntityType="Self.gen_personel" />
+          <EntitySet Name="mesaj" EntityType="Self.mesaj" />
+          <EntitySet Name="personel_oturum" EntityType="Self.personel_oturum" />
+          <EntitySet Name="personel_tur" EntityType="Self.personel_tur" />
+          <AssociationSet Name="FK_BMS_DEPARTMAN_KOD" Association="Self.FK_BMS_DEPARTMAN_KOD">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BMS_EKIP_KOD" Association="Self.FK_BMS_EKIP_KOD">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BMS_FABRIKA_KOD" Association="Self.FK_BMS_FABRIKA_KOD">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BMS_GRUP_KOD" Association="Self.FK_BMS_GRUP_KOD">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BMS_HAT_KOD" Association="Self.FK_BMS_HAT_KOD">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BMS_URUN_GRUP_KOD" Association="Self.FK_BMS_URUN_GRUP_KOD">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ORG_NO" Association="Self.FK_ORG_NO">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SORUMLU_ORG_1" Association="Self.FK_SORUMLU_ORG_1">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SORUMLU_ORG_2" Association="Self.FK_SORUMLU_ORG_2">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SORUMLU_ORG_3" Association="Self.FK_SORUMLU_ORG_3">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="gen_personel" EntitySet="gen_personel" />
+          </AssociationSet>
+          <AssociationSet Name="mesaj_ibfk_1" Association="Self.mesaj_ibfk_1">
+            <End Role="gen_personel" EntitySet="gen_personel" />
+            <End Role="mesaj" EntitySet="mesaj" />
+          </AssociationSet>
+          <AssociationSet Name="PER_OTU_SICIL_KOD" Association="Self.PER_OTU_SICIL_KOD">
+            <End Role="gen_personel" EntitySet="gen_personel" />
+            <End Role="personel_oturum" EntitySet="personel_oturum" />
+          </AssociationSet>
+          <AssociationSet Name="mesaj_organizasyon" Association="Self.mesaj_organizasyon">
+            <End Role="mesaj" EntitySet="mesaj" />
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+          </AssociationSet>
+          <AssociationSet Name="personel_yetki" Association="Self.personel_yetki">
+            <End Role="gen_personel" EntitySet="gen_personel" />
+            <End Role="personel_tur" EntitySet="personel_tur" />
+          </AssociationSet>
+          <FunctionImport Name="PR_TELEFON_NO_KONTROL" ReturnType="Collection(hb_Inside.Model.PR_TELEFON_NO_KONTROL_Result)">
+            <Parameter Name="P_TEL_NO" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="PR_TELEFON_NO_KONTROL_Result" />
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="hb_InsideModelStoreContainer" CdmEntityContainer="HB_InsideEntities">
+          <EntitySetMapping Name="gen_organizasyon">
+            <EntityTypeMapping TypeName="hb_Inside.Model.gen_organizasyon">
+              <MappingFragment StoreEntitySet="gen_organizasyon">
+                <ScalarProperty Name="ORG_NO" ColumnName="ORG_NO" />
+                <ScalarProperty Name="ORG_AD" ColumnName="ORG_AD" />
+                <ScalarProperty Name="ORG_AD_EN" ColumnName="ORG_AD_EN" />
+                <ScalarProperty Name="ORG_TIP_NO" ColumnName="ORG_TIP_NO" />
+                <ScalarProperty Name="PARENT_ORG_NO" ColumnName="PARENT_ORG_NO" />
+                <ScalarProperty Name="MALIYET_MERKEZ_KOD" ColumnName="MALIYET_MERKEZ_KOD" />
+                <ScalarProperty Name="MALIYET_MERKEZ_AD" ColumnName="MALIYET_MERKEZ_AD" />
+                <ScalarProperty Name="FABRIKA_ORG_NO" ColumnName="FABRIKA_ORG_NO" />
+                <ScalarProperty Name="HAT_ORG_NO" ColumnName="HAT_ORG_NO" />
+                <ScalarProperty Name="GRUP_ORG_NO" ColumnName="GRUP_ORG_NO" />
+                <ScalarProperty Name="URETIM_KOD" ColumnName="URETIM_KOD" />
+                <ScalarProperty Name="SW_GUNLUK_HESAPLAMA" ColumnName="SW_GUNLUK_HESAPLAMA" />
+                <ScalarProperty Name="KARIYER_BASAMAK_1" ColumnName="KARIYER_BASAMAK_1" />
+                <ScalarProperty Name="KARIYER_BASAMAK_2" ColumnName="KARIYER_BASAMAK_2" />
+                <ScalarProperty Name="KARIYER_BASAMAK_3" ColumnName="KARIYER_BASAMAK_3" />
+                <ScalarProperty Name="ORG_DURUM" ColumnName="ORG_DURUM" />
+                <ScalarProperty Name="EKLEYEN_KULLANICI" ColumnName="EKLEYEN_KULLANICI" />
+                <ScalarProperty Name="EKLENEN_TARIH" ColumnName="EKLENEN_TARIH" />
+                <ScalarProperty Name="GUNCELLEYEN_KULLANICI" ColumnName="GUNCELLEYEN_KULLANICI" />
+                <ScalarProperty Name="GUNCELLENEN_TARIH" ColumnName="GUNCELLENEN_TARIH" />
+                <ScalarProperty Name="ULKE_KOD" ColumnName="ULKE_KOD" />
+                <ScalarProperty Name="SW_MAKINE_TRANSFER_YAPILABILIR" ColumnName="SW_MAKINE_TRANSFER_YAPILABILIR" />
+                <ScalarProperty Name="UST_HAT_KOD" ColumnName="UST_HAT_KOD" />
+                <ScalarProperty Name="HAT_TIP" ColumnName="HAT_TIP" />
+                <ScalarProperty Name="DAGITIMSURE" ColumnName="DAGITIMSURE" />
+                <ScalarProperty Name="ORG_KISA_AD" ColumnName="ORG_KISA_AD" />
+                <ScalarProperty Name="FAALIYET_RUHSAT_NO" ColumnName="FAALIYET_RUHSAT_NO" />
+                <ScalarProperty Name="SW_KESIM_EKIP" ColumnName="SW_KESIM_EKIP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gen_personel">
+            <EntityTypeMapping TypeName="hb_Inside.Model.gen_personel">
+              <MappingFragment StoreEntitySet="gen_personel">
+                <ScalarProperty Name="SICIL_KOD" ColumnName="SICIL_KOD" />
+                <ScalarProperty Name="AD" ColumnName="AD" />
+                <ScalarProperty Name="SOYAD" ColumnName="SOYAD" />
+                <ScalarProperty Name="SIFRE" ColumnName="SIFRE" />
+                <ScalarProperty Name="ULKE_KOD" ColumnName="ULKE_KOD" />
+                <ScalarProperty Name="ORG_NO" ColumnName="ORG_NO" />
+                <ScalarProperty Name="SW_BORDRO_ALT_BIRIM" ColumnName="SW_BORDRO_ALT_BIRIM" />
+                <ScalarProperty Name="POZISYON" ColumnName="POZISYON" />
+                <ScalarProperty Name="CINSIYET" ColumnName="CINSIYET" />
+                <ScalarProperty Name="DOGUM_TARIHI" ColumnName="DOGUM_TARIHI" />
+                <ScalarProperty Name="MEDENI_DURUM" ColumnName="MEDENI_DURUM" />
+                <ScalarProperty Name="KAN_GRUBU" ColumnName="KAN_GRUBU" />
+                <ScalarProperty Name="ISE_GIRIS_TARIHI" ColumnName="ISE_GIRIS_TARIHI" />
+                <ScalarProperty Name="ISTEN_CIKIS_TARIHI" ColumnName="ISTEN_CIKIS_TARIHI" />
+                <ScalarProperty Name="SIRKET_NO" ColumnName="SIRKET_NO" />
+                <ScalarProperty Name="TC_KIMLIK_NO" ColumnName="TC_KIMLIK_NO" />
+                <ScalarProperty Name="SSK_NO" ColumnName="SSK_NO" />
+                <ScalarProperty Name="ADRES" ColumnName="ADRES" />
+                <ScalarProperty Name="IL" ColumnName="IL" />
+                <ScalarProperty Name="ILCE" ColumnName="ILCE" />
+                <ScalarProperty Name="TEL1" ColumnName="TEL1" />
+                <ScalarProperty Name="TEL2" ColumnName="TEL2" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="EGITIM" ColumnName="EGITIM" />
+                <ScalarProperty Name="MUHASEBE_KODU" ColumnName="MUHASEBE_KODU" />
+                <ScalarProperty Name="SW_USTALIK" ColumnName="SW_USTALIK" />
+                <ScalarProperty Name="NAR_HESABI_GRUBU" ColumnName="NAR_HESABI_GRUBU" />
+                <ScalarProperty Name="SW_MERKEZ_URETIM" ColumnName="SW_MERKEZ_URETIM" />
+                <ScalarProperty Name="POSTA_KOD" ColumnName="POSTA_KOD" />
+                <ScalarProperty Name="SICIL_KAYNAK" ColumnName="SICIL_KAYNAK" />
+                <ScalarProperty Name="YONETICI_1" ColumnName="YONETICI_1" />
+                <ScalarProperty Name="YONETICI_2" ColumnName="YONETICI_2" />
+                <ScalarProperty Name="YONETICI_3" ColumnName="YONETICI_3" />
+                <ScalarProperty Name="SORUMLU_ORG_1" ColumnName="SORUMLU_ORG_1" />
+                <ScalarProperty Name="SORUMLU_ORG_2" ColumnName="SORUMLU_ORG_2" />
+                <ScalarProperty Name="SORUMLU_ORG_3" ColumnName="SORUMLU_ORG_3" />
+                <ScalarProperty Name="CALISMA_GRUBU" ColumnName="CALISMA_GRUBU" />
+                <ScalarProperty Name="EKLEYEN_KULLANICI" ColumnName="EKLEYEN_KULLANICI" />
+                <ScalarProperty Name="EKLENEN_TARIH" ColumnName="EKLENEN_TARIH" />
+                <ScalarProperty Name="GUNCELLEYEN_KULLANICI" ColumnName="GUNCELLEYEN_KULLANICI" />
+                <ScalarProperty Name="GUNCELLENEN_TARIH" ColumnName="GUNCELLENEN_TARIH" />
+                <ScalarProperty Name="SW_AKTIF" ColumnName="SW_AKTIF" />
+                <ScalarProperty Name="POZISYON_ACIKLAMA" ColumnName="POZISYON_ACIKLAMA" />
+                <ScalarProperty Name="SAP_ORG_KOD" ColumnName="SAP_ORG_KOD" />
+                <ScalarProperty Name="SAP_ORG_ACIKLAMA" ColumnName="SAP_ORG_ACIKLAMA" />
+                <ScalarProperty Name="BMS_FABRIKA_KOD" ColumnName="BMS_FABRIKA_KOD" />
+                <ScalarProperty Name="BMS_URUN_GRUP_KOD" ColumnName="BMS_URUN_GRUP_KOD" />
+                <ScalarProperty Name="BMS_HAT_KOD" ColumnName="BMS_HAT_KOD" />
+                <ScalarProperty Name="BMS_GRUP_KOD" ColumnName="BMS_GRUP_KOD" />
+                <ScalarProperty Name="BMS_EKIP_KOD" ColumnName="BMS_EKIP_KOD" />
+                <ScalarProperty Name="BMS_DEPARTMAN_KOD" ColumnName="BMS_DEPARTMAN_KOD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mesaj">
+            <EntityTypeMapping TypeName="hb_Inside.Model.mesaj">
+              <MappingFragment StoreEntitySet="mesaj">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="SICIL_KOD" ColumnName="SICIL_KOD" />
+                <ScalarProperty Name="MESAJ1" ColumnName="MESAJ" />
+                <ScalarProperty Name="EKLENEN_TARIH" ColumnName="EKLENEN_TARIH" />
+                <ScalarProperty Name="BARER_TOKEN" ColumnName="BARER_TOKEN" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personel_oturum">
+            <EntityTypeMapping TypeName="hb_Inside.Model.personel_oturum">
+              <MappingFragment StoreEntitySet="personel_oturum">
+                <ScalarProperty Name="SICIL_KOD" ColumnName="SICIL_KOD" />
+                <ScalarProperty Name="OTURUM_BASLANGIC_TARIH" ColumnName="OTURUM_BASLANGIC_TARIH" />
+                <ScalarProperty Name="OTURUM_BITIS_TARIH" ColumnName="OTURUM_BITIS_TARIH" />
+                <ScalarProperty Name="BEARER_TOKEN" ColumnName="BEARER_TOKEN" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="personel_tur">
+            <EntityTypeMapping TypeName="hb_Inside.Model.personel_tur">
+              <MappingFragment StoreEntitySet="personel_tur">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="mesaj_organizasyon" TypeName="hb_Inside.Model.mesaj_organizasyon" StoreEntitySet="mesaj_organizasyon">
+            <EndProperty Name="mesaj">
+              <ScalarProperty Name="ID" ColumnName="ID" />
+            </EndProperty>
+            <EndProperty Name="gen_organizasyon">
+              <ScalarProperty Name="ORG_NO" ColumnName="ORG_NO" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="personel_yetki" TypeName="hb_Inside.Model.personel_yetki" StoreEntitySet="personel_yetki">
+            <EndProperty Name="gen_personel">
+              <ScalarProperty Name="SICIL_KOD" ColumnName="SICIL_KOD" />
+            </EndProperty>
+            <EndProperty Name="personel_tur">
+              <ScalarProperty Name="ID" ColumnName="TUR_ID" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="PR_TELEFON_NO_KONTROL" FunctionName="hb_Inside.Model.Store.PR_TELEFON_NO_KONTROL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hb_Inside.Model.PR_TELEFON_NO_KONTROL_Result" />
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
