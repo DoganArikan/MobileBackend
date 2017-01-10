@@ -12,16 +12,13 @@ namespace MobileBackend.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class mesaj
+    public partial class mesaj_organizasyon
     {
         public int ID { get; set; }
-        public int GONDEREN_SICIL_KOD { get; set; }
-        public string MESAJ1 { get; set; }
-        public System.DateTime EKLENEN_TARIH { get; set; }
-        public Nullable<int> MESAJ_ID { get; set; }
-        public Nullable<int> ALICI_SICIL_KOD { get; set; }
+        public decimal ORG_NO { get; set; }
+        public int MESAJ_ID { get; set; }
     
-        public virtual gen_personel gen_personel { get; set; }
-        public virtual mesaj_organizasyon mesaj_organizasyon { get; set; }
+        public virtual gen_organizasyon gen_organizasyon { get; set; }
+        public virtual mesaj mesaj { get; set; }
     }
 }

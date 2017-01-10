@@ -4,26 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f7f3b67897a34dc58f5cf97283ebb08a" Name="Diagram1" ZoomLevel="33">
-        <EntityTypeShape EntityType="hb_Inside.Model.gen_organizasyon" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="hb_Inside.Model.gen_personel" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="hb_Inside.Model.mesaj" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="hb_Inside.Model.personel_oturum" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="hb_Inside.Model.personel_tur" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
-        <AssociationConnector Association="hb_Inside.Model.FK_BMS_DEPARTMAN_KOD" ManuallyRouted="false" />
-        <AssociationConnector Association="hb_Inside.Model.FK_BMS_EKIP_KOD" ManuallyRouted="false" />
-        <AssociationConnector Association="hb_Inside.Model.FK_BMS_FABRIKA_KOD" ManuallyRouted="false" />
-        <AssociationConnector Association="hb_Inside.Model.FK_BMS_GRUP_KOD" ManuallyRouted="false" />
-        <AssociationConnector Association="hb_Inside.Model.FK_BMS_HAT_KOD" ManuallyRouted="false" />
-        <AssociationConnector Association="hb_Inside.Model.FK_BMS_URUN_GRUP_KOD" ManuallyRouted="false" />
-        <AssociationConnector Association="hb_Inside.Model.FK_ORG_NO" ManuallyRouted="false" />
-        <AssociationConnector Association="hb_Inside.Model.FK_SORUMLU_ORG_1" ManuallyRouted="false" />
-        <AssociationConnector Association="hb_Inside.Model.FK_SORUMLU_ORG_2" ManuallyRouted="false" />
-        <AssociationConnector Association="hb_Inside.Model.FK_SORUMLU_ORG_3" ManuallyRouted="false" />
-        <AssociationConnector Association="hb_Inside.Model.mesaj_ibfk_1" ManuallyRouted="false" />
-        <AssociationConnector Association="hb_Inside.Model.PER_OTU_SICIL_KOD" ManuallyRouted="false" />
-        <AssociationConnector Association="hb_Inside.Model.mesaj_organizasyon" ManuallyRouted="false" />
-        <AssociationConnector Association="hb_Inside.Model.personel_yetki" ManuallyRouted="false" />
+      <Diagram DiagramId="f9cd39122881454fb45a1c847a88cb84" Name="Diagram1" ZoomLevel="65">
+        <EntityTypeShape EntityType="hbtrinsi_insideModel.gen_organizasyon" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="hbtrinsi_insideModel.gen_personel" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="hbtrinsi_insideModel.mesaj" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hbtrinsi_insideModel.mesaj_organizasyon" Width="1.5" PointX="7.5" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="hbtrinsi_insideModel.personel_oturum" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="hbtrinsi_insideModel.personel_tur" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <AssociationConnector Association="hbtrinsi_insideModel.FK_BMS_DEPARTMAN_KOD" ManuallyRouted="false" />
+        <AssociationConnector Association="hbtrinsi_insideModel.FK_BMS_EKIP_KOD" ManuallyRouted="false" />
+        <AssociationConnector Association="hbtrinsi_insideModel.FK_BMS_FABRIKA_KOD" ManuallyRouted="false" />
+        <AssociationConnector Association="hbtrinsi_insideModel.FK_BMS_GRUP_KOD" ManuallyRouted="false" />
+        <AssociationConnector Association="hbtrinsi_insideModel.FK_BMS_HAT_KOD" ManuallyRouted="false" />
+        <AssociationConnector Association="hbtrinsi_insideModel.FK_BMS_URUN_GRUP_KOD" ManuallyRouted="false" />
+        <AssociationConnector Association="hbtrinsi_insideModel.FK_ORG_NO" ManuallyRouted="false" />
+        <AssociationConnector Association="hbtrinsi_insideModel.FK_SORUMLU_ORG_1" ManuallyRouted="false" />
+        <AssociationConnector Association="hbtrinsi_insideModel.FK_SORUMLU_ORG_2" ManuallyRouted="false" />
+        <AssociationConnector Association="hbtrinsi_insideModel.FK_SORUMLU_ORG_3" ManuallyRouted="false" />
+        <AssociationConnector Association="hbtrinsi_insideModel.mesaj_organizasyon_ibfk_2" ManuallyRouted="false" />
+        <AssociationConnector Association="hbtrinsi_insideModel.mesaj_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="hbtrinsi_insideModel.PER_OTU_SICIL_KOD" ManuallyRouted="false" />
+        <AssociationConnector Association="hbtrinsi_insideModel.mesaj_organizasyon_ibfk_1" ManuallyRouted="false" />
+        <AssociationConnector Association="hbtrinsi_insideModel.personel_yetki" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

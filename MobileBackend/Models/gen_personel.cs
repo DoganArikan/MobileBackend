@@ -9,8 +9,10 @@
 
 namespace MobileBackend.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
+    using System.Xml.Serialization;
     
     public partial class gen_personel
     {
@@ -71,19 +73,43 @@ namespace MobileBackend.Models
         public Nullable<decimal> BMS_GRUP_KOD { get; set; }
         public Nullable<decimal> BMS_EKIP_KOD { get; set; }
         public Nullable<decimal> BMS_DEPARTMAN_KOD { get; set; }
-    
+        [XmlIgnore]
+        [JsonIgnore]
         public virtual gen_organizasyon gen_organizasyon { get; set; }
+        [XmlIgnore]
+        [JsonIgnore]
         public virtual gen_organizasyon gen_organizasyon1 { get; set; }
+        [XmlIgnore]
+        [JsonIgnore]
         public virtual gen_organizasyon gen_organizasyon2 { get; set; }
+        [XmlIgnore]
+        [JsonIgnore]
         public virtual gen_organizasyon gen_organizasyon3 { get; set; }
+        [XmlIgnore]
+        [JsonIgnore]
         public virtual gen_organizasyon gen_organizasyon4 { get; set; }
+        [XmlIgnore]
+        [JsonIgnore]
         public virtual gen_organizasyon gen_organizasyon5 { get; set; }
+        [XmlIgnore]
+        [JsonIgnore]
         public virtual gen_organizasyon gen_organizasyon6 { get; set; }
+        [XmlIgnore]
+        [JsonIgnore]
         public virtual gen_organizasyon gen_organizasyon7 { get; set; }
+        [XmlIgnore]
+        [JsonIgnore]
         public virtual gen_organizasyon gen_organizasyon8 { get; set; }
+        [XmlIgnore]
+        [JsonIgnore]
         public virtual gen_organizasyon gen_organizasyon9 { get; set; }
+        [XmlIgnore]
+        [JsonIgnore]
         public virtual ICollection<mesaj> mesaj { get; set; }
+        [XmlIgnore]
+        [JsonIgnore]
         public virtual ICollection<personel_oturum> personel_oturum { get; set; }
+        
         public virtual personel_tur personel_tur { get; set; }
     }
 }

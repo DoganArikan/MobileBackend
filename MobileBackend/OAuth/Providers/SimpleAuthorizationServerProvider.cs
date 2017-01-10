@@ -28,40 +28,46 @@ namespace MobileBackend.OAuth.Providers
         // OAuthAuthorizationServerProvider sınıfının kaynak erişimine izin verebilmek için ilgili GrantResourceOwnerCredentials metotunu override ediyoruz.
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
         {
-            
-            context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
-             string str = context.Request.Headers.Get("User-Agent");
-
-            DataTable dt = PR_TELEFON_NO_KONTROL(context.Password);
-
-            if (dt.Rows.Count > 0)
+            try
             {
+                context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
+                string str = context.Request.Headers.Get("User-Agent");
 
-                var db = new HB_InsideEntities();
+                DataTable dt = PR_TELEFON_NO_KONTROL(context.Password);
 
-                var t = new personel_oturum
+                if (dt.Rows.Count > 0)
                 {
-                    OTURUM_BASLANGIC_TARIH = DateTime.Now,
-                    OTURUM_BITIS_TARIH = DateTime.Now.AddDays(1),
-                    SICIL_KOD = Convert.ToInt32(dt.Rows[0]["SICIL_KOD"]),
-                    BEARER_TOKEN = "Dummy Token"
-                };
+                    var db = new hbtrinsi_insideEntities();
 
-                db.personel_oturum.Add(t);
-                db.SaveChanges();
+                    var t = new personel_oturum
+                    {
+                        OTURUM_BASLANGIC_TARIH = DateTime.Now,
+                        OTURUM_BITIS_TARIH = DateTime.Now.AddDays(1),
+                        SICIL_KOD = Convert.ToInt32(dt.Rows[0]["SICIL_KOD"]),
+                        BEARER_TOKEN = "Dummy Token"
+                    };
 
-                var identity = new ClaimsIdentity(context.Options.AuthenticationType);
-                        identity.AddClaim(new Claim("sub", context.Password));
-                        identity.AddClaim(new Claim("role", "user"));
-                        context.Validated(identity);
-                 
-           }   
-           else
-           {
-               //context.SetError("invalid_grant", "Authentication error!");
-                context.SetError("invalid_grant", msj);
+                    db.personel_oturum.Add(t);
+                    db.SaveChanges();
+                    string sicil = dt.Rows[0]["SICIL_KOD"].ToString();
+
+                    var identity = new ClaimsIdentity(context.Options.AuthenticationType);
+                    identity.AddClaim(new Claim("sub", context.Password));
+                    identity.AddClaim(new Claim(ClaimTypes.Name, dt.Rows[0]["SICIL_KOD"].ToString()));
+                    identity.AddClaim(new Claim("role", "user"));
+                    context.Validated(identity);
+
+                }
+                else
+                {
+                    //context.SetError("invalid_grant", "Authentication error!");
+                    context.SetError("invalid_grant", msj);
+                }
             }
-
+            catch (Exception ex)
+            {
+                  context.SetError("invalid_grant", ex.Message);
+            }
 
 
 

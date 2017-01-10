@@ -26,7 +26,7 @@ namespace MobileBackend.Models
             this.gen_personel7 = new HashSet<gen_personel>();
             this.gen_personel8 = new HashSet<gen_personel>();
             this.gen_personel9 = new HashSet<gen_personel>();
-            this.mesaj = new HashSet<mesaj>();
+            this.mesaj_organizasyon = new HashSet<mesaj_organizasyon>();
         }
     
         public decimal ORG_NO { get; set; }
@@ -68,6 +68,6 @@ namespace MobileBackend.Models
         public virtual ICollection<gen_personel> gen_personel7 { get; set; }
         public virtual ICollection<gen_personel> gen_personel8 { get; set; }
         public virtual ICollection<gen_personel> gen_personel9 { get; set; }
-        public virtual ICollection<mesaj> mesaj { get; set; }
+        public virtual ICollection<mesaj_organizasyon> mesaj_organizasyon { get; set; }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="hb_Inside.Model.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="hbtrinsi_insideModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="gen_organizasyon">
           <Key>
             <PropertyRef Name="ORG_NO" />
@@ -99,18 +99,19 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SICIL_KOD" Type="int" Nullable="false" />
+          <Property Name="GONDEREN_SICIL_KOD" Type="int" Nullable="false" />
           <Property Name="MESAJ" Type="varchar" MaxLength="1000" Nullable="false" />
           <Property Name="EKLENEN_TARIH" Type="date" Nullable="false" />
-          <Property Name="BARER_TOKEN" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="MESAJ_ID" Type="int" />
+          <Property Name="ALICI_SICIL_KOD" Type="int" />
         </EntityType>
         <EntityType Name="mesaj_organizasyon">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="ORG_NO" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="ORG_NO" Type="decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="MESAJ_ID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="personel_oturum">
           <Key>
@@ -119,7 +120,7 @@
           <Property Name="SICIL_KOD" Type="int" Nullable="false" />
           <Property Name="OTURUM_BASLANGIC_TARIH" Type="date" Nullable="false" />
           <Property Name="OTURUM_BITIS_TARIH" Type="date" Nullable="false" />
-          <Property Name="BEARER_TOKEN" Type="varchar" MaxLength="1000" Nullable="false" />
+          <Property Name="BEARER_TOKEN" Type="varchar" MaxLength="1000" />
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="personel_tur">
@@ -264,13 +265,13 @@
               <PropertyRef Name="SICIL_KOD" />
             </Principal>
             <Dependent Role="mesaj">
-              <PropertyRef Name="SICIL_KOD" />
+              <PropertyRef Name="GONDEREN_SICIL_KOD" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="mesaj_organizasyon_ibfk_1">
           <End Role="mesaj" Type="Self.mesaj" Multiplicity="1" />
-          <End Role="mesaj_organizasyon" Type="Self.mesaj_organizasyon" Multiplicity="*" />
+          <End Role="mesaj_organizasyon" Type="Self.mesaj_organizasyon" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="mesaj">
               <PropertyRef Name="ID" />
@@ -328,17 +329,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="PR_TELEFON_NO_KONTROL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="hb_insight">
+        <Function Name="PR_MESAJ_GETIR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="hbtrinsi_inside">
+          <Parameter Name="P_MESAJ_ID" Type="decimal" Mode="In" />
+          <Parameter Name="P_MESAJ_GUNCELLEME_YON" Type="decimal" Mode="In" />
+          <Parameter Name="P_SICIL_KOD" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="PR_TELEFON_NO_KONTROL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="hbtrinsi_inside">
           <Parameter Name="P_TEL_NO" Type="varchar" Mode="In" />
         </Function>
-        <EntityContainer Name="hb_InsideModelStoreContainer">
-          <EntitySet Name="gen_organizasyon" EntityType="Self.gen_organizasyon" Schema="hb_insight" store:Type="Tables" />
-          <EntitySet Name="gen_personel" EntityType="Self.gen_personel" Schema="hb_insight" store:Type="Tables" />
-          <EntitySet Name="mesaj" EntityType="Self.mesaj" Schema="hb_insight" store:Type="Tables" />
-          <EntitySet Name="mesaj_organizasyon" EntityType="Self.mesaj_organizasyon" Schema="hb_insight" store:Type="Tables" />
-          <EntitySet Name="personel_oturum" EntityType="Self.personel_oturum" Schema="hb_insight" store:Type="Tables" />
-          <EntitySet Name="personel_tur" EntityType="Self.personel_tur" Schema="hb_insight" store:Type="Tables" />
-          <EntitySet Name="personel_yetki" EntityType="Self.personel_yetki" Schema="hb_insight" store:Type="Tables" />
+        <EntityContainer Name="hbtrinsi_insideModelStoreContainer">
+          <EntitySet Name="gen_organizasyon" EntityType="Self.gen_organizasyon" Schema="hbtrinsi_inside" store:Type="Tables" />
+          <EntitySet Name="gen_personel" EntityType="Self.gen_personel" Schema="hbtrinsi_inside" store:Type="Tables" />
+          <EntitySet Name="mesaj" EntityType="Self.mesaj" Schema="hbtrinsi_inside" store:Type="Tables" />
+          <EntitySet Name="mesaj_organizasyon" EntityType="Self.mesaj_organizasyon" Schema="hbtrinsi_inside" store:Type="Tables" />
+          <EntitySet Name="personel_oturum" EntityType="Self.personel_oturum" Schema="hbtrinsi_inside" store:Type="Tables" />
+          <EntitySet Name="personel_tur" EntityType="Self.personel_tur" Schema="hbtrinsi_inside" store:Type="Tables" />
+          <EntitySet Name="personel_yetki" EntityType="Self.personel_yetki" Schema="hbtrinsi_inside" store:Type="Tables" />
           <AssociationSet Name="FK_BMS_DEPARTMAN_KOD" Association="Self.FK_BMS_DEPARTMAN_KOD">
             <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
             <End Role="gen_personel" EntitySet="gen_personel" />
@@ -408,7 +414,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="hb_Inside.Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="hbtrinsi_insideModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="gen_organizasyon">
           <Key>
             <PropertyRef Name="ORG_NO" />
@@ -451,7 +457,7 @@
           <NavigationProperty Name="gen_personel7" Relationship="Self.FK_SORUMLU_ORG_1" FromRole="gen_organizasyon" ToRole="gen_personel" />
           <NavigationProperty Name="gen_personel8" Relationship="Self.FK_SORUMLU_ORG_2" FromRole="gen_organizasyon" ToRole="gen_personel" />
           <NavigationProperty Name="gen_personel9" Relationship="Self.FK_SORUMLU_ORG_3" FromRole="gen_organizasyon" ToRole="gen_personel" />
-          <NavigationProperty Name="mesaj" Relationship="Self.mesaj_organizasyon" FromRole="gen_organizasyon" ToRole="mesaj" />
+          <NavigationProperty Name="mesaj_organizasyon" Relationship="Self.mesaj_organizasyon_ibfk_2" FromRole="gen_organizasyon" ToRole="mesaj_organizasyon" />
         </EntityType>
         <EntityType Name="gen_personel">
           <Key>
@@ -527,12 +533,23 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SICIL_KOD" Type="Int32" Nullable="false" />
+          <Property Name="GONDEREN_SICIL_KOD" Type="Int32" Nullable="false" />
           <Property Name="MESAJ1" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="EKLENEN_TARIH" Type="DateTime" Nullable="false" />
-          <Property Name="BARER_TOKEN" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MESAJ_ID" Type="Int32" />
+          <Property Name="ALICI_SICIL_KOD" Type="Int32" />
           <NavigationProperty Name="gen_personel" Relationship="Self.mesaj_ibfk_1" FromRole="mesaj" ToRole="gen_personel" />
-          <NavigationProperty Name="gen_organizasyon" Relationship="Self.mesaj_organizasyon" FromRole="mesaj" ToRole="gen_organizasyon" />
+          <NavigationProperty Name="mesaj_organizasyon" Relationship="Self.mesaj_organizasyon_ibfk_1" FromRole="mesaj" ToRole="mesaj_organizasyon" />
+        </EntityType>
+        <EntityType Name="mesaj_organizasyon">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ORG_NO" Type="Decimal" Nullable="false" />
+          <Property Name="MESAJ_ID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="gen_organizasyon" Relationship="Self.mesaj_organizasyon_ibfk_2" FromRole="mesaj_organizasyon" ToRole="gen_organizasyon" />
+          <NavigationProperty Name="mesaj" Relationship="Self.mesaj_organizasyon_ibfk_1" FromRole="mesaj_organizasyon" ToRole="mesaj" />
         </EntityType>
         <EntityType Name="personel_oturum">
           <Key>
@@ -541,7 +558,7 @@
           <Property Name="SICIL_KOD" Type="Int32" Nullable="false" />
           <Property Name="OTURUM_BASLANGIC_TARIH" Type="DateTime" Nullable="false" />
           <Property Name="OTURUM_BITIS_TARIH" Type="DateTime" Nullable="false" />
-          <Property Name="BEARER_TOKEN" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BEARER_TOKEN" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <NavigationProperty Name="gen_personel" Relationship="Self.PER_OTU_SICIL_KOD" FromRole="personel_oturum" ToRole="gen_personel" />
         </EntityType>
@@ -673,6 +690,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="mesaj_organizasyon_ibfk_2">
+          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="1" />
+          <End Role="mesaj_organizasyon" Type="Self.mesaj_organizasyon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Principal>
+            <Dependent Role="mesaj_organizasyon">
+              <PropertyRef Name="ORG_NO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="mesaj_ibfk_1">
           <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="1" />
           <End Role="mesaj" Type="Self.mesaj" Multiplicity="*" />
@@ -681,7 +710,7 @@
               <PropertyRef Name="SICIL_KOD" />
             </Principal>
             <Dependent Role="mesaj">
-              <PropertyRef Name="SICIL_KOD" />
+              <PropertyRef Name="GONDEREN_SICIL_KOD" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -697,18 +726,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="mesaj_organizasyon">
-          <End Role="mesaj" Type="Self.mesaj" Multiplicity="*" />
-          <End Role="gen_organizasyon" Type="Self.gen_organizasyon" Multiplicity="*" />
+        <Association Name="mesaj_organizasyon_ibfk_1">
+          <End Role="mesaj" Type="Self.mesaj" Multiplicity="1" />
+          <End Role="mesaj_organizasyon" Type="Self.mesaj_organizasyon" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="mesaj">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="mesaj_organizasyon">
+              <PropertyRef Name="ID" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         <Association Name="personel_yetki">
           <End Role="gen_personel" Type="Self.gen_personel" Multiplicity="*" />
           <End Role="personel_tur" Type="Self.personel_tur" Multiplicity="0..1" />
         </Association>
-        <EntityContainer Name="HB_InsideEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="hbtrinsi_insideEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="gen_organizasyon" EntityType="Self.gen_organizasyon" />
           <EntitySet Name="gen_personel" EntityType="Self.gen_personel" />
           <EntitySet Name="mesaj" EntityType="Self.mesaj" />
+          <EntitySet Name="mesaj_organizasyon" EntityType="Self.mesaj_organizasyon" />
           <EntitySet Name="personel_oturum" EntityType="Self.personel_oturum" />
           <EntitySet Name="personel_tur" EntityType="Self.personel_tur" />
           <AssociationSet Name="FK_BMS_DEPARTMAN_KOD" Association="Self.FK_BMS_DEPARTMAN_KOD">
@@ -751,6 +789,10 @@
             <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
             <End Role="gen_personel" EntitySet="gen_personel" />
           </AssociationSet>
+          <AssociationSet Name="mesaj_organizasyon_ibfk_2" Association="Self.mesaj_organizasyon_ibfk_2">
+            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="mesaj_organizasyon" EntitySet="mesaj_organizasyon" />
+          </AssociationSet>
           <AssociationSet Name="mesaj_ibfk_1" Association="Self.mesaj_ibfk_1">
             <End Role="gen_personel" EntitySet="gen_personel" />
             <End Role="mesaj" EntitySet="mesaj" />
@@ -759,27 +801,33 @@
             <End Role="gen_personel" EntitySet="gen_personel" />
             <End Role="personel_oturum" EntitySet="personel_oturum" />
           </AssociationSet>
-          <AssociationSet Name="mesaj_organizasyon" Association="Self.mesaj_organizasyon">
+          <AssociationSet Name="mesaj_organizasyon_ibfk_1" Association="Self.mesaj_organizasyon_ibfk_1">
             <End Role="mesaj" EntitySet="mesaj" />
-            <End Role="gen_organizasyon" EntitySet="gen_organizasyon" />
+            <End Role="mesaj_organizasyon" EntitySet="mesaj_organizasyon" />
           </AssociationSet>
           <AssociationSet Name="personel_yetki" Association="Self.personel_yetki">
             <End Role="gen_personel" EntitySet="gen_personel" />
             <End Role="personel_tur" EntitySet="personel_tur" />
           </AssociationSet>
-          <FunctionImport Name="PR_TELEFON_NO_KONTROL" ReturnType="Collection(hb_Inside.Model.PR_TELEFON_NO_KONTROL_Result)">
+          <FunctionImport Name="PR_MESAJ_GETIR" ReturnType="Collection(hbtrinsi_insideModel.PR_MESAJ_GETIR_Result)">
+            <Parameter Name="P_MESAJ_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="P_MESAJ_GUNCELLEME_YON" Mode="In" Type="Decimal" />
+            <Parameter Name="P_SICIL_KOD" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PR_TELEFON_NO_KONTROL" ReturnType="Collection(hbtrinsi_insideModel.PR_TELEFON_NO_KONTROL_Result)">
             <Parameter Name="P_TEL_NO" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
+        <ComplexType Name="PR_MESAJ_GETIR_Result" />
         <ComplexType Name="PR_TELEFON_NO_KONTROL_Result" />
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="hb_InsideModelStoreContainer" CdmEntityContainer="HB_InsideEntities">
+        <EntityContainerMapping StorageEntityContainer="hbtrinsi_insideModelStoreContainer" CdmEntityContainer="hbtrinsi_insideEntities">
           <EntitySetMapping Name="gen_organizasyon">
-            <EntityTypeMapping TypeName="hb_Inside.Model.gen_organizasyon">
+            <EntityTypeMapping TypeName="hbtrinsi_insideModel.gen_organizasyon">
               <MappingFragment StoreEntitySet="gen_organizasyon">
                 <ScalarProperty Name="ORG_NO" ColumnName="ORG_NO" />
                 <ScalarProperty Name="ORG_AD" ColumnName="ORG_AD" />
@@ -813,7 +861,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="gen_personel">
-            <EntityTypeMapping TypeName="hb_Inside.Model.gen_personel">
+            <EntityTypeMapping TypeName="hbtrinsi_insideModel.gen_personel">
               <MappingFragment StoreEntitySet="gen_personel">
                 <ScalarProperty Name="SICIL_KOD" ColumnName="SICIL_KOD" />
                 <ScalarProperty Name="AD" ColumnName="AD" />
@@ -870,18 +918,28 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="mesaj">
-            <EntityTypeMapping TypeName="hb_Inside.Model.mesaj">
+            <EntityTypeMapping TypeName="hbtrinsi_insideModel.mesaj">
               <MappingFragment StoreEntitySet="mesaj">
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="SICIL_KOD" ColumnName="SICIL_KOD" />
+                <ScalarProperty Name="GONDEREN_SICIL_KOD" ColumnName="GONDEREN_SICIL_KOD" />
                 <ScalarProperty Name="MESAJ1" ColumnName="MESAJ" />
                 <ScalarProperty Name="EKLENEN_TARIH" ColumnName="EKLENEN_TARIH" />
-                <ScalarProperty Name="BARER_TOKEN" ColumnName="BARER_TOKEN" />
+                <ScalarProperty Name="MESAJ_ID" ColumnName="MESAJ_ID" />
+                <ScalarProperty Name="ALICI_SICIL_KOD" ColumnName="ALICI_SICIL_KOD" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mesaj_organizasyon">
+            <EntityTypeMapping TypeName="hbtrinsi_insideModel.mesaj_organizasyon">
+              <MappingFragment StoreEntitySet="mesaj_organizasyon">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ORG_NO" ColumnName="ORG_NO" />
+                <ScalarProperty Name="MESAJ_ID" ColumnName="MESAJ_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="personel_oturum">
-            <EntityTypeMapping TypeName="hb_Inside.Model.personel_oturum">
+            <EntityTypeMapping TypeName="hbtrinsi_insideModel.personel_oturum">
               <MappingFragment StoreEntitySet="personel_oturum">
                 <ScalarProperty Name="SICIL_KOD" ColumnName="SICIL_KOD" />
                 <ScalarProperty Name="OTURUM_BASLANGIC_TARIH" ColumnName="OTURUM_BASLANGIC_TARIH" />
@@ -892,22 +950,14 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="personel_tur">
-            <EntityTypeMapping TypeName="hb_Inside.Model.personel_tur">
+            <EntityTypeMapping TypeName="hbtrinsi_insideModel.personel_tur">
               <MappingFragment StoreEntitySet="personel_tur">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ACIKLAMA" ColumnName="ACIKLAMA" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="mesaj_organizasyon" TypeName="hb_Inside.Model.mesaj_organizasyon" StoreEntitySet="mesaj_organizasyon">
-            <EndProperty Name="mesaj">
-              <ScalarProperty Name="ID" ColumnName="ID" />
-            </EndProperty>
-            <EndProperty Name="gen_organizasyon">
-              <ScalarProperty Name="ORG_NO" ColumnName="ORG_NO" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="personel_yetki" TypeName="hb_Inside.Model.personel_yetki" StoreEntitySet="personel_yetki">
+          <AssociationSetMapping Name="personel_yetki" TypeName="hbtrinsi_insideModel.personel_yetki" StoreEntitySet="personel_yetki">
             <EndProperty Name="gen_personel">
               <ScalarProperty Name="SICIL_KOD" ColumnName="SICIL_KOD" />
             </EndProperty>
@@ -915,9 +965,14 @@
               <ScalarProperty Name="ID" ColumnName="TUR_ID" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="PR_TELEFON_NO_KONTROL" FunctionName="hb_Inside.Model.Store.PR_TELEFON_NO_KONTROL">
+          <FunctionImportMapping FunctionImportName="PR_MESAJ_GETIR" FunctionName="hbtrinsi_insideModel.Store.PR_MESAJ_GETIR">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="hb_Inside.Model.PR_TELEFON_NO_KONTROL_Result" />
+              <ComplexTypeMapping TypeName="hbtrinsi_insideModel.PR_MESAJ_GETIR_Result" />
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_TELEFON_NO_KONTROL" FunctionName="hbtrinsi_insideModel.Store.PR_TELEFON_NO_KONTROL">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="hbtrinsi_insideModel.PR_TELEFON_NO_KONTROL_Result" />
             </ResultMapping>
           </FunctionImportMapping>
         </EntityContainerMapping>

@@ -16,10 +16,10 @@ namespace MobileBackend.Models
     using System.Data.Objects.DataClasses;
     using System.Linq;
     
-    public partial class HB_InsideEntities : DbContext
+    public partial class hbtrinsi_insideEntities : DbContext
     {
-        public HB_InsideEntities()
-            : base("name=HB_InsideEntities")
+        public hbtrinsi_insideEntities()
+            : base("name=hbtrinsi_insideEntities")
         {
         }
     
@@ -31,8 +31,26 @@ namespace MobileBackend.Models
         public DbSet<gen_organizasyon> gen_organizasyon { get; set; }
         public DbSet<gen_personel> gen_personel { get; set; }
         public DbSet<mesaj> mesaj { get; set; }
+        public DbSet<mesaj_organizasyon> mesaj_organizasyon { get; set; }
         public DbSet<personel_oturum> personel_oturum { get; set; }
         public DbSet<personel_tur> personel_tur { get; set; }
+    
+        public virtual ObjectResult<PR_MESAJ_GETIR_Result> PR_MESAJ_GETIR(Nullable<decimal> p_MESAJ_ID, Nullable<decimal> p_MESAJ_GUNCELLEME_YON, Nullable<decimal> p_SICIL_KOD)
+        {
+            var p_MESAJ_IDParameter = p_MESAJ_ID.HasValue ?
+                new ObjectParameter("P_MESAJ_ID", p_MESAJ_ID) :
+                new ObjectParameter("P_MESAJ_ID", typeof(decimal));
+    
+            var p_MESAJ_GUNCELLEME_YONParameter = p_MESAJ_GUNCELLEME_YON.HasValue ?
+                new ObjectParameter("P_MESAJ_GUNCELLEME_YON", p_MESAJ_GUNCELLEME_YON) :
+                new ObjectParameter("P_MESAJ_GUNCELLEME_YON", typeof(decimal));
+    
+            var p_SICIL_KODParameter = p_SICIL_KOD.HasValue ?
+                new ObjectParameter("P_SICIL_KOD", p_SICIL_KOD) :
+                new ObjectParameter("P_SICIL_KOD", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PR_MESAJ_GETIR_Result>("PR_MESAJ_GETIR", p_MESAJ_IDParameter, p_MESAJ_GUNCELLEME_YONParameter, p_SICIL_KODParameter);
+        }
     
         public virtual ObjectResult<PR_TELEFON_NO_KONTROL_Result> PR_TELEFON_NO_KONTROL(string p_TEL_NO)
         {

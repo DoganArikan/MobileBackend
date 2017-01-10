@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\e76156\documents\visual studio 2015\Projects\MobileBackend\MobileBackend\Models\HB_Inside.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Tolga Baris\Desktop\HBTR_Inside\MobileBackend\MobileBackend\Models\HB_Inside.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

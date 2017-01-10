@@ -15,8 +15,8 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>MobileBackend</RootNamespace>
     <AssemblyName>MobileBackend</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -48,11 +48,8 @@
       <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -110,24 +107,24 @@
     </Reference>
     <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>.\MySql.Data.dll</HintPath>
+      <HintPath>bin\MySql.Data.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="MySql.Data.Entity.EF5, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\MySql.Data.Entity.EF5.dll</HintPath>
     </Reference>
-    <Reference Include="mysql.data.entity.EF6, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+    <Reference Include="MySql.Data.Entity.EF6, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MySql.Data.Entities.6.8.3.0\lib\net45\mysql.data.entity.EF6.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>bin\MySql.Data.Entity.EF6.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Fabric.Plugin, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\MySql.Fabric.Plugin.dll</HintPath>
     </Reference>
-    <Reference Include="MySql.Web, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+    <Reference Include="MySql.Web, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\MySql.ConnectorNET.Web.6.8.3.2\lib\net40\MySql.Web.dll</HintPath>
+      <HintPath>bin\MySql.Web.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
@@ -235,10 +232,6 @@
       <DependentUpon>HB_Inside.edmx</DependentUpon>
       <LastGenOutput>HB_Inside.cs</LastGenOutput>
     </Content>
-    <None Include="Properties\PublishProfiles\hbtrinside.com - Web Deploy %282%29.pubxml" />
-    <None Include="Properties\PublishProfiles\hbtrinside.com - Web Deploy.pubxml" />
-    <None Include="Properties\PublishProfiles\inside.pubxml" />
-    <None Include="Properties\PublishProfiles\localPublish.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -262,8 +255,12 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\AuthenticationController.cs" />
+    <Compile Include="Controllers\MesajController.cs" />
+    <Compile Include="Controllers\OrganizasyonController.cs" />
+    <Compile Include="Controllers\PersonelController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Core\Converter.cs" />
+    <Compile Include="Core\CoreLib.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -288,19 +285,34 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HB_Inside.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\InitialObjects\MesajGetirInitParameter.cs" />
+    <Compile Include="Models\InitialObjects\MesajGonderInitParameter.cs" />
+    <Compile Include="Models\InitialObjects\OrganizasyonBilgisiGetirInitParameter.cs" />
+    <Compile Include="Models\InitialObjects\PersonelBilgisiGetirInitParameter.cs" />
     <Compile Include="Models\mesaj.cs">
       <DependentUpon>HB_Inside.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\mesaj_organizasyon.cs">
+      <DependentUpon>HB_Inside.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\ParameterObjects\Sonuc.cs" />
     <Compile Include="Models\personel_oturum.cs">
       <DependentUpon>HB_Inside.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\personel_tur.cs">
       <DependentUpon>HB_Inside.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PR_MESAJ_GETIR_Result.cs">
+      <DependentUpon>HB_Inside.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\PR_TELEFON_NO_KONTROL_Result.cs">
       <DependentUpon>HB_Inside.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ResultObjects\MesajGetirResultParameter.cs" />
+    <Compile Include="Models\ResultObjects\MesajGonderResultParameter.cs" />
+    <Compile Include="Models\ResultObjects\OrganizasyonBilgisiGetirResultParameter.cs" />
+    <Compile Include="Models\ResultObjects\PersonelBilgisiGetirResultParameter.cs" />
     <Compile Include="OAuth\Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="OAuth\startup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -348,7 +360,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>8091</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
