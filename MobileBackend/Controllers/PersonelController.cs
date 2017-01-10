@@ -34,7 +34,7 @@ namespace MobileBackend.Controllers
                 var db = new hbtrinsi_insideEntities();
                 List<gen_personel> result;
 
-                var query = db.gen_personel.Where(x => x.SICIL_KOD == 76868//personelBilgisiGetirInitParameter.SicilKod
+                var query = db.gen_personel.Where(x => x.SICIL_KOD == personelBilgisiGetirInitParameter.SicilKod//personelBilgisiGetirInitParameter.SicilKod
                     ).AsEnumerable();
                 result = query.ToList();
                

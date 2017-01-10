@@ -232,6 +232,7 @@
       <DependentUpon>HB_Inside.edmx</DependentUpon>
       <LastGenOutput>HB_Inside.cs</LastGenOutput>
     </Content>
+    <None Include="Properties\PublishProfiles\Local.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
