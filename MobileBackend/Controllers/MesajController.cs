@@ -39,7 +39,7 @@ namespace MobileBackend.Controllers
                    mesaj.GONDEREN_SICIL_KOD = Converter.ToInt32(dataRow["GONDEREN_SICIL_KOD"]);
                    mesaj.ID = Converter.ToInt32(dataRow["ID"]);
                    mesaj.MESAJ_ID =  Converter.ToInt32(dataRow["MESAJ_ID"]);
-                   mesaj.MESAJ1 = dataRow["MESAJ1"].ToString();
+                   mesaj.MESAJ1 = dataRow["MESAJ"].ToString();
                    mesajList.Add(mesaj);
                }
                return new MesajGetirResultParameter() { Mesaj = mesajList.ToArray(), Sonuc = new Sonuc { SonucKod = 0, SonucMesaj = "Mesaj Bulundu", Ekran = 0 } };
@@ -68,7 +68,7 @@ namespace MobileBackend.Controllers
                var t = new mesaj
                {
                    ALICI_SICIL_KOD = mesajGonderInitParameter.AliciSicilKod,
-                   EKLENEN_TARIH = DateTime.Now,
+               //    EKLENEN_TARIH = DateTime.Now,
                    GONDEREN_SICIL_KOD = mesajGonderInitParameter.GonderenSicilKod,
                    MESAJ1 = mesajGonderInitParameter.Mesaj
                };
@@ -86,12 +86,13 @@ namespace MobileBackend.Controllers
                db.mesaj_organizasyon.Add(t1);
                db.SaveChanges();
 
-               return new MesajGonderResultParameter() { MesajId = ID, Sonuc = new Sonuc { SonucKod = 0, SonucMesaj = "Mesaj Bilgisi Gönderildi", Ekran = 1 } };
+               return new MesajGonderResultParameter() { MesajId = ID, Sonuc = new Sonuc { SonucKod = 0, SonucMesaj = "Mesaj Bilgisi Gönderildi", Ekran = 1 }, RMesajGonderInitParameter = mesajGonderInitParameter };
               
            }
            catch(Exception ex)
            {
-               return new MesajGonderResultParameter() { Sonuc = new Sonuc {ExceptionStackTrace=ex.StackTrace, SonucKod = -1, SonucMesaj = "Mesaj Bilgisi Gönderilemedi", Ekran = 1 } };
+               msj = ex.StackTrace;
+               return new MesajGonderResultParameter() { Sonuc = new Sonuc { ExceptionStackTrace = ex.StackTrace, SonucKod = -1, SonucMesaj = "Mesaj Bilgisi Gönderilemedi", Ekran = 1 }, RMesajGonderInitParameter = mesajGonderInitParameter };
            }
            finally
            {
