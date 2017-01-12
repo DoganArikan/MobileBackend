@@ -8,7 +8,7 @@ namespace MobileBackend.Models.ResultObjects
 {
     public class MesajGetirResultParameter
     {
-        public mesaj[] Mesaj { get; set; }
+        public mesaj[] Bilgi { get; set; }
         public Sonuc Sonuc { get; set; }
     }
 }

@@ -29,7 +29,7 @@ namespace MobileBackend.Controllers
 
                         return new OrganizasyonBilgisiGetirResultParameter() { Sonuc = new Sonuc { SonucKod = -1, SonucMesaj = "Organizasyon Bilgisi Bulunamadı", Ekran = 1 } };
                     }
-                    return new OrganizasyonBilgisiGetirResultParameter() { OrganizasyonBilgi = (query.ToList()).ToArray(), Sonuc = new Sonuc { SonucKod = 0, SonucMesaj = "Organizasyon Bulundu", Ekran = 0 } };
+                    return new OrganizasyonBilgisiGetirResultParameter() { Bilgi = (query.ToList()).ToArray(), Sonuc = new Sonuc { SonucKod = 0, SonucMesaj = "Organizasyon Bulundu", Ekran = 0 } };
                 }
             }
             catch (Exception ex)

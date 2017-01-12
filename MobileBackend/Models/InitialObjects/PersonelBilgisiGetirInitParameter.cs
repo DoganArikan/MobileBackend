@@ -8,5 +8,6 @@ namespace MobileBackend.Models.InitialObjects
     public class PersonelBilgisiGetirInitParameter
     {
        public decimal SicilKod  { get; set; }
+       public String TelNo { get; set; }
     }
 }

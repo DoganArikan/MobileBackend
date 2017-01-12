@@ -42,7 +42,7 @@ namespace MobileBackend.Controllers
                    mesaj.MESAJ1 = dataRow["MESAJ"].ToString();
                    mesajList.Add(mesaj);
                }
-               return new MesajGetirResultParameter() { Mesaj = mesajList.ToArray(), Sonuc = new Sonuc { SonucKod = 0, SonucMesaj = "Mesaj Bulundu", Ekran = 0 } };
+               return new MesajGetirResultParameter() { Bilgi = mesajList.ToArray(), Sonuc = new Sonuc { SonucKod = 0, SonucMesaj = "Mesaj Bulundu", Ekran = 0 } };
            }
            catch(Exception ex)
            {
@@ -86,7 +86,7 @@ namespace MobileBackend.Controllers
                db.mesaj_organizasyon.Add(t1);
                db.SaveChanges();
 
-               return new MesajGonderResultParameter() { MesajId = ID, Sonuc = new Sonuc { SonucKod = 0, SonucMesaj = "Mesaj Bilgisi Gönderildi", Ekran = 1 }, RMesajGonderInitParameter = mesajGonderInitParameter };
+               return new MesajGonderResultParameter() { Bilgi = ID, Sonuc = new Sonuc { SonucKod = 0, SonucMesaj = "Mesaj Bilgisi Gönderildi", Ekran = 1 }, RMesajGonderInitParameter = mesajGonderInitParameter };
               
            }
            catch(Exception ex)

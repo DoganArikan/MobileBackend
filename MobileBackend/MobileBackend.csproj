@@ -260,6 +260,7 @@
     <Compile Include="Controllers\OrganizasyonController.cs" />
     <Compile Include="Controllers\PersonelController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
+    <Compile Include="Controllers\YetkiController.cs" />
     <Compile Include="Core\Converter.cs" />
     <Compile Include="Core\CoreLib.cs" />
     <Compile Include="Global.asax.cs">

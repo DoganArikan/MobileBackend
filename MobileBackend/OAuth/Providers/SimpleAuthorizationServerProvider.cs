@@ -33,7 +33,7 @@ namespace MobileBackend.OAuth.Providers
                 context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "*" });
                 string str = context.Request.Headers.Get("User-Agent");
 
-                DataTable dt = PR_TELEFON_NO_KONTROL(context.Password);
+                DataTable dt = PR_TELEFON_NO_KONTROL(context.Password,-1);
 
                 if (dt.Rows.Count > 0)
                 {
@@ -95,8 +95,8 @@ namespace MobileBackend.OAuth.Providers
         {
             return ConfigurationManager.ConnectionStrings["HB_Inside"].ConnectionString;
         }
-       
-        public static DataTable PR_TELEFON_NO_KONTROL(String P_TEL_NO)
+
+        public static DataTable PR_TELEFON_NO_KONTROL(String P_TEL_NO, Decimal P_SICIL_KOD)
         {
             DataTable Dt = new DataTable("PR_TELEFON_NO_KONTROL");
             try
@@ -106,6 +106,7 @@ namespace MobileBackend.OAuth.Providers
           
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("P_TEL_NO", P_TEL_NO);
+                cmd.Parameters.AddWithValue("P_SICIL_KOD", P_SICIL_KOD);
                 cmd.Connection.Open();
                 cmd.ExecuteNonQuery();
 

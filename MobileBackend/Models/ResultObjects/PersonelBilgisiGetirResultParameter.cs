@@ -8,7 +8,7 @@ namespace MobileBackend.Models.ResultObjects
 {
     public class PersonelBilgisiGetirResultParameter
     {
-        public gen_personel[] PersonelBilgi { get; set; }
+        public gen_personel[] Bilgi { get; set; }
         public Sonuc Sonuc { get; set; }
     }
 }
